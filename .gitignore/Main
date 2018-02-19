@@ -1,5 +1,3 @@
-#baseline input = baseline switch t.o.v. conf_check(zelfscan of geen zelfscan)
-#conf_check = fil****swi0*
 baseline = ("baseline")
 conf_check = ("fil_switch_conf")
 
