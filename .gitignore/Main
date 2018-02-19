@@ -1,0 +1,45 @@
+#baseline input = baseline switch t.o.v. conf_check(zelfscan of geen zelfscan)
+#conf_check = fil****swi0*
+baseline = ("baseline")
+conf_check = ("fil_switch_conf")
+
+f1 = open(baseline)
+f2 = open(conf_check)
+#confirmatie dat script gaat lopen
+print("-----------------------------------")
+print("Vergelijking switch configuratie.. ", " > " + baseline, " < " +conf_check)
+print("-----------------------------------")
+
+f1_line = f1.readline()
+f2_line = f2.readline()
+
+line_no = 1
+
+while f1_line != '' or f2_line != '':
+
+    f1_line = f1_line.rstrip()
+    f2_line = f2_line.rstrip()
+
+    if f1_line != f2_line:
+        #als regel niet bestaat in conf
+        if f2_line == '' and f1_line != '':
+            print("baseline+", "Line-%d" % line_no, f1_line)
+        elif f1_line != '':
+            print("baseline", "Line-%d" % line_no, f1_line)
+
+        if f1_line == '' and f2_line != '':
+            print("switchconfiguratie+", "Line-%d" % line_no, f2_line)
+        elif f2_line != '':
+            print("switchconfiguratie", "Line-%d" %  line_no, f2_line)
+
+        print ""
+
+    f1_line = f1.readline()
+    f2_line = f2.readline()
+
+
+    #line counter +1
+    line_no += 1
+
+f1.close()
+f2.close()
